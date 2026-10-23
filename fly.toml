@@ -1,0 +1,8 @@
+# Trace is a Discord bot: it only makes outgoing connections, so there is no [http_service].
+# Secrets (DISCORD_TOKEN etc.) are set in the Fly dashboard, not in this file.
+
+[build]
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "256mb"
