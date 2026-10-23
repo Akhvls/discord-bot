@@ -2,19 +2,14 @@
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
+# Trace is a Discord bot: it only makes outgoing connections, so there is no [http_service].
+# Fly's launcher adds one by default, and with it Fly would health-check port 8080 and stop
+# the machine for lack of web traffic.
 
 app = 'trace-admin'
 primary_region = 'iad'
 
 [build]
-
-[http_service]
-  internal_port = 8080
-  force_https = true
-  auto_stop_machines = 'stop'
-  auto_start_machines = true
-  min_machines_running = 0
-  processes = ['app']
 
 [[vm]]
   size = 'shared-cpu-1x'
