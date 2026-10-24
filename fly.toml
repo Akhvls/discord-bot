@@ -6,11 +6,16 @@
 # Fly's launcher adds one by default, and with it Fly would health-check port 8080 and stop
 # the machine for lack of web traffic.
 
-app = 'trace-admin'
-primary_region = 'iad'
-
-[build]
+app = "trace-admin"
+primary_region = "iad"
 
 [[vm]]
-  size = 'shared-cpu-1x'
-  memory = '256mb'
+memory = "256mb"
+size = "shared-cpu-1x"
+
+[http_service]
+  internal_port = 8080 # Change this to the port your app listens on
+  force_https = true
+  auto_stop_machines = "off"
+  auto_start_machines = true
+  min_machines_running = 1
